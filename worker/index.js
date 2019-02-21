@@ -1,6 +1,6 @@
 // Import required modules
 const redis = require('redis');
-const credentials = require('./credentilas.js');
+const credentials = require('./consts.js');
 
 // Set up redis client
 const redisClient = redis.createClient(
