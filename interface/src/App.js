@@ -16,10 +16,11 @@ class App extends Component {
             <Link to="/">Go home</Link>
             <Link to="/fake"></Link>
           </header>
-        </div>
-        <div>
-          <Route exact path="/" component={Fibonacci} />
-          <Route path="/fake" component={FakePage} />
+        
+          <div>
+            <Route exact path="/" component={Fibonacci} />
+            <Route path="/fake" component={FakePage} />
+          </div>
         </div>
       </Router>
     );
