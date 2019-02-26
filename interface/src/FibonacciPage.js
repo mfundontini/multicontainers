@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
 
 export default class App extends Component {
     // State variables
@@ -17,7 +16,7 @@ export default class App extends Component {
     }
 
     // Fetch indices from the api/postgres
-    fetchIndices() {
+    async fetchIndices() {
         let indices = await axios.get('api/values/indices');
         this.setState({
             indices: indices.data
@@ -25,7 +24,7 @@ export default class App extends Component {
     }
 
     // Fetch values from the api/redis
-    fetchValues() {
+    async fetchValues() {
         let values = await axios.get('api/values/all');
         this.setState({
             values: values.data
@@ -62,7 +61,7 @@ export default class App extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={this.handleSubmit}>
                     <label>Enter your index: </label>
                     <input value={this.state.index} onChange={(event) => {this.setState({index: event.target.value})}}></input>
                     <button></button>

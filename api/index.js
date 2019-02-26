@@ -14,7 +14,7 @@ app.use(cors());
 const redisClient = redis.createClient(
     {
         host: credentials.REDIS_HOST,
-        port: REDIS_PORT,
+        port: credentials.REDIS_PORT,
         retry_strategy: () => 1000
     }
 );
