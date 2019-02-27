@@ -5,13 +5,15 @@
             "name": "react-interface",
             "image": "hypo30cal/multi-interface",
             "hostname": "interface",
-            "essential": false
+            "essential": false,
+            "memory": 128
         },
         {
             "name": "express-api",
             "image": "hypo30cal/multi-api",
             "hostname": "api",
-            "essential": false
+            "essential": false,
+            "memory": 128
         },
         {
             "name": "nginx-router",
@@ -24,13 +26,15 @@
                 }
             ],
             "essential": true,
-            "links": [ "react-interface", "express-api"]
+            "links": [ "react-interface", "express-api"],
+            "memory": 128
         },
         {
             "name": "async-worker",
             "image": "hypo30cal/multi-worker",
             "hostname": "worker",
-            "essential": false
+            "essential": false,
+            "memory": 128
         }
     ]
 }
