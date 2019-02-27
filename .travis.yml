@@ -1,0 +1,18 @@
+version: "3"
+services:
+  - docker
+
+before_install:
+  - docker build -t mfundo/multidocker -f ./interface/Dockerfile.dev ./interface
+
+script:
+  - docker run mfundo/multidocker  npm test -- --coverage
+
+# after_success:
+#   - docker build -t mfundo/multi-api ./api
+#   - docker build -t mfundo/multi-worker ./worker
+#   - docker build -t mfundo/multi-interface ./interface
+#   - docker build -t mfundo/multi-nginx ./nginx
+#   # Upload the images to dockerhub
+#   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin
+
