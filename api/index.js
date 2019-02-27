@@ -52,7 +52,7 @@ app.get('/values/indices', async(request, response) => {
 });
 
 // The full subset of hashvalues
-app.get('/values/current', async(request, response) => {
+app.get('/values/all', async(request, response) => {
     redisClient.hgetall('values', (error, values) => {
         response.send(values);
     });

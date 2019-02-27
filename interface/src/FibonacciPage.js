@@ -52,7 +52,7 @@ export default class App extends Component {
 
     // handle submit bound function
     handleSubmit = async(event) => {
-        let response = await axios.post('api/values/index', {index: this.state.index});
+        let response = await axios.post('api/values/set', {index: this.state.index});
         console.log(response);
         this.setState({index: ''});
     }
@@ -64,7 +64,7 @@ export default class App extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <label>Enter your index: </label>
                     <input value={this.state.index} onChange={(event) => {this.setState({index: event.target.value})}}></input>
-                    <button></button>
+                    <button>Submit</button>
                 </form>
 
                 <h3>Indices Seen: </h3>
