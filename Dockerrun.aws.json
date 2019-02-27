@@ -1,0 +1,36 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "react-interface",
+            "image": "hypo30cal/multi-interface",
+            "hostname": "interface",
+            "essential": false
+        },
+        {
+            "name": "express-api",
+            "image": "hypo30cal/multi-api",
+            "hostname": "api",
+            "essential": false
+        },
+        {
+            "name": "nginx-router",
+            "image": "hypo30cal/multi-nginx",
+            "hostname": "nginx",
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "essential": true,
+            "links": [ "react-interface", "express-api"]
+        },
+        {
+            "name": "async-worker",
+            "image": "hypo30cal/multi-worker",
+            "hostname": "worker",
+            "essential": false
+        }
+    ]
+}
