@@ -8,11 +8,15 @@ before_install:
 script:
   - docker run mfundo/multidocker  npm test -- --coverage
 
-# after_success:
-#   - docker build -t mfundo/multi-api ./api
-#   - docker build -t mfundo/multi-worker ./worker
-#   - docker build -t mfundo/multi-interface ./interface
-#   - docker build -t mfundo/multi-nginx ./nginx
-#   # Upload the images to dockerhub
-#   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin
-
+after_success:
+  - docker build -t mfundo/multi-api ./api
+  - docker build -t mfundo/multi-worker ./worker
+  - docker build -t mfundo/multi-interface ./interface
+  - docker build -t mfundo/multi-nginx ./nginx
+  # Upload the images to dockerhub
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin
+  # Push images to dockerhub
+  - docker push mfundo/multi-api
+  - docker push mfundo/multi-worker
+  - docker push mfundo/multi-interface
+  - docker push mfundo/multi-nginx
